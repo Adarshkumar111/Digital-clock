@@ -1,89 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-.hero{
+.hero {
     width: 100%;
     min-height: 100vh;
-    background:linear-gradient(45deg, #08001f, #30187d) ;
+    background: linear-gradient(45deg, #08001f, #30187d);
     color: #fff;
-    position: relative;
-}
-
-.container{
-    width: 800px;
-    height: 180px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50% );
-    
-}
-
-.clock{
-    width: 100%;
-    height: 100%;
-    background:rgba(235, 0, 255, 0.11) ;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(40px);
+    padding: 20px;
 }
 
-.container::before{
-    content: " ";
-    width: 180px;
-    height: 180px;
+.container {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    padding: 30px 20px;
+    position: relative;
+}
+
+.clock {
+    width: 100%;
+    background: rgba(235, 0, 255, 0.11);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(40px);
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.container::before {
+    content: "";
+    width: 120px;
+    height: 120px;
     background: #f41b75;
     border-radius: 5px;
     position: absolute;
-    left: -50px;
-    top: -50px;
+    left: -40px;
+    top: -40px;
     z-index: -1;
 }
 
-.container::after{
-    content: " ";
-    width: 180px;
-    height: 180px;
+.container::after {
+    content: "";
+    width: 150px;
+    height: 150px;
     background: #419aff;
-    border-radius: 550%;
+    border-radius: 50%;
     position: absolute;
-    right: -30px;
-    bottom: -50px;
+    right: -40px;
+    bottom: -40px;
     z-index: -1;
 }
-.clock span{
-    font-size: 80px;
-    width: 110px;
-    display: inline-block;
+
+.clock span {
+    font-size: 8vw;
+    max-width: 100px;
+    width: 25%;
     text-align: center;
     position: relative;
+    flex: 1;
+    min-width: 80px;
 }
-.clock span::after{
-    
-    font-size: 16px;
+
+.clock span::after {
+    font-size: 3vw;
+    min-font-size: 12px;
     position: absolute;
-    bottom: -5px;
+    bottom: -20px;
     left: 50%;
-    transform: translate(-50%);
-
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
 
-#hrs::after{
+/* Labels */
+#hrs::after {
     content: 'HOURS';
 }
 
-#min::after{
+#min::after {
     content: 'MINS';
 }
 
-#sec::after{
+#sec::after {
     content: 'SEC';
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .clock span {
+        font-size: 12vw;
+    }
+
+    .clock span::after {
+        font-size: 4vw;
+    }
+
+    .container::before,
+    .container::after {
+        display: none;
+    }
 }
